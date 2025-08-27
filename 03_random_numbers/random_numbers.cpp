@@ -26,3 +26,11 @@ int main(void)
     
     return 0;
 }
+
+for
+while
+if
+else if
+else
+do for
+do while
