@@ -107,3 +107,7 @@ void rotateLeft(std::vector<int>& v, int k)
         k--;
     }
 }
+
+//push allows you to push a value into the vector
+//pop deletes a value from the vector
+//begin and end are iterators
