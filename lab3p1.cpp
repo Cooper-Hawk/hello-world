@@ -8,12 +8,42 @@
 
 
 //initialize the function "numberOfDuplicates" which will be used to find the number of duplicate numbers in a given vector
-int numberOfDuplicates(const vector<int>& nums);
+int numberOfDuplicates(const std::vector<int>& nums);
 
 //initialize the function "printVector" which returns the used vector inside of curly braces with commas in between each number
-void printVector(const vector<int>& nums);
+void printVector(const std::vector<int>& nums);
 
-int numberOfDuplicates(const vector<int>& nums)
+
+/*
+int main()
+{
+     std::vector<int> v1 = {1, 1, 1, 1};
+     std::vector<int> v2 = {1, 1, 2, 2};
+     std::vector<int> v3 = {1, 3, 4, 3, 1, 3, 4, 3};
+     std::vector<int> v4 = {1, 2, 3, 4};
+
+     std::cout << "The vector is: ";
+     printVector(v1);
+     std::cout << std::endl << "It has " << numberOfDuplicates(v1) << " duplicate(s)" << std::endl;
+
+     std::cout << "The vector is: ";
+     printVector(v2);
+     std::cout << std::endl << "It has " << numberOfDuplicates(v2) << " duplicate(s)" << std::endl;
+
+     std::cout << "The vector is: ";
+     printVector(v3);
+     std::cout << std::endl << "It has " << numberOfDuplicates(v3) << " duplicate(s)" << std::endl;
+
+     std::cout << "The vector is: ";
+     printVector(v4);
+     std::cout << std::endl << "It has " << numberOfDuplicates(v4) << " duplicate(s)" << std::endl;
+
+     return 0;
+}
+     */
+
+
+int numberOfDuplicates(const std::vector<int>& nums)
 {
     //begin counting how many duplicates we have encountered
     int dupeCount = 0;
@@ -26,9 +56,9 @@ int numberOfDuplicates(const vector<int>& nums)
     for (int i = 0; i < nums.size(); i++)
     {
         //reads false currently, will read true when a duplicate is encountered
-        duplicate = 0;
+        int duplicate = 0;
         //reads false currently, will read true when a number is already counted
-        counted = 0;
+        int counted = 0;
 
 
         /*check to see if number has been present already
@@ -64,13 +94,13 @@ int numberOfDuplicates(const vector<int>& nums)
             dupeCount++;
         }
     }
-    return count;
+    return dupeCount;
 }
 
 //print our vector in the correct manner
-void printVector(const vector<int>&& nums)
+void printVector(const std::vector<int>& nums)
 {
-    std::cout << "{ ";
+    std::cout << "{";
     for(int l = 0; l < nums.size(); l++)
     {
         std::cout << nums[l];
