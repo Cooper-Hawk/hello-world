@@ -2,7 +2,8 @@
 #include <ctime>
 #include <string>
 // Create a Route structure
-class Route {
+class Route
+{
 private: // access specifier
     std::string source;
     std::string destination;
@@ -27,23 +28,24 @@ Route();
 Route(std::string source_, std::string destination_);
 
 // Get functions (getters, accessor functions)
-std::string getSource(void);
-std::string getDestination(void);
+std::string getSource();
+std::string getDestination();
 
 // getLength
-int getLength(void);
+int getLength();
 
 // Set function (mutator functions, setters)
 void setSource(std::string new_source);
 void setDestination(std::string new_destination);
 
-void print(void);
+void print();
 // Returns whether the route is long or not
 bool isLong();
 };
 
 
-int main(void) {
+int main()
+{
 srand(time(0)); // set the seed of random number
 // Create an object of Route
 Route fall_trip;
@@ -68,7 +70,7 @@ return 0;
 
 
 
-void Route::updateLength(void)
+void Route::updateLength()
 {
     length = (source.empty() || destination.empty()) ? 0 : rand() % 900 + 75;
 }
@@ -87,15 +89,15 @@ Route::Route(std::string source_, std::string destination_)
 }
 
 
-std::string Route::getSource(void)
+std::string Route::getSource()
 {
     return source;
 }
-std::string Route::getDestination(void)
+std::string Route::getDestination()
 {
     return destination;
 }
-int Route::getLength(void)
+int Route::getLength()
 {
     return length;
 }
@@ -113,12 +115,11 @@ void Route::setDestination(std::string new_destination)
 }
 
 
-void Route::print(void)
+void Route::print()
 {
     std::cout << source << " -> " << destination << " : " << length <<
     std::endl;
 }
-
 
 
 // Method implementation
