@@ -14,6 +14,9 @@
     void drive(double distance); if car has enough fuel to drive the given distance, print <Car (make, model) is driving!>
     
 */
+
+#ifndef CAR_H
+#define CAR_H
 #include <string>
 
 class Car 
@@ -44,3 +47,6 @@ private:
     int m_year;
     double m_MPG;
 };
+
+
+#endif

@@ -1,6 +1,7 @@
 //The implementation of a Car class
-#include "Car.hpp"
+
 #include <iostream>
+#include "Car.hpp"
 
 //no arg constructor
 
