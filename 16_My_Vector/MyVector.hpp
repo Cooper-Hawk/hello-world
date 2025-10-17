@@ -7,13 +7,18 @@ public:
     MyVector(int capacity = 1);
     ~MyVector();
     MyVector(const MyVector& other);
-
+    int getCapacity() const;
     void push_back(int value);
+    int pop_back();
     void print() const;
+
+    int& at(int index);
 
 
 
 private:
+    void allocate_memory(int memory_size);
+
     int* elements;
     int size;
     int capacity;

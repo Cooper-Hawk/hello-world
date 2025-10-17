@@ -16,34 +16,39 @@ MyVector::~MyVector()
 MyVector::MyVector(const MyVector& other)
 {
     //TODO 1 (create copy constructor) MANDATORY!!
-    elements = new int (*other.elements);
+    size = other.size;
+    capacity = other.capacity;
+    elements = new int [capacity];
 }
 
 void MyVector::push_back(int value)
 {
-    if (size != capacity)
+    if (size >= capacity)
     {
-        elements[size] = value;
-        size++;
+        allocate_memory(capacity * 2);
     }
-    else
-    {
-        //TODO 2 (create new pointer for an array with a larger size and update the array to allow it to hold more data) MANDATORY!!
-        static increase = 1;
-        int* elements2 = new int [capacity + increase];
-        for (int i = 0; i < capacity; ++i)
-        {
-            elements2[i] = elements[i];
-        }
-        elements2[size];
-        size++;
-        increase++;
-        delete elements[size];
-    }
+    elements[size] = value;
+    size++;
 }
 
 //TODO 3 create a function pop_back
 //void pop_back(); (capacity should not be greater than doubled size)
+int MyVector::pop_back()
+{
+    if (size > 0)
+    {
+        if (size - 1 < capacity / 2)
+        {
+            allocate_memory(capacity / 2);
+        }
+        return elements[size--];
+    }
+    else
+    {
+        //Throw an exception
+        throw "The vector is empty!";
+    }
+}
 
 void MyVector::print() const
 {
@@ -53,4 +58,33 @@ void MyVector::print() const
         std::cout << elements[i] << ' ';
     }
     std::cout << " ]\n";
+}
+
+void MyVector::allocate_memory(int memory_size)
+{
+    capacity = memory_size;
+    int* old = elements;
+    //Allocate a new memory (bigger or smaller)
+    elements = new int[memory_size];
+    for (int i = 0; i < size; i++)
+    {
+        elements[i] = old[i];
+    }
+    //Deallocate the old memory
+    delete [] old;
+
+}
+
+int MyVector::getCapacity() const
+{
+    return capacity;
+}
+
+int& MyVector::at(int index)
+{
+    if (index < 0 || index > size - 1)
+    {
+        throw "Invalid index";
+    }
+    return elements[index];
 }
