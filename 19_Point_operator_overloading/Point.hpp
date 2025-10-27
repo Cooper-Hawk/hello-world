@@ -46,12 +46,13 @@
 #define POINT_H
 
 #include <string>
+#include <iostream>
 
 
 class Point {
 public:
 
-Point(int x = 0, int y = 0, char *tag = nullptr);
+Point(int x = 0, int y = 0, const char *tag = nullptr);
 ~Point();
 Point(const Point& other); // copy constructor
 
@@ -76,13 +77,27 @@ Point operator-();
 Point operator++();
 Point operator++(int );
 
-//TODO decrement
+// TODO decrement
+
+// Assignment operator
+void operator=(const Point& other);
 
 std::string toString() const;
+
+// friend function
+friend int sum_coordinates();
+
+friend std::ostream& operator<<(std::ostream& out, Point& point);
+
+// TODO
+friend std::istream& operator>>(std::ostream& in, Point& point);
 
 private:
 int x;
 int y;
 char *tag;
 };
+
+// std::ostream& operator<<(std::ostream& out, Point& point);
+
 #endif

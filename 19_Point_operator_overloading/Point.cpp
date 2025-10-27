@@ -157,3 +157,29 @@ Point Point::operator++(int )
     this->y += 1;
     return temp;
 }
+
+void Point::operator=(const Point& other)
+{
+    x = other.x;
+    y = other.y;
+    if (tag)
+    {
+        delete [] tag;
+    }
+    if (other.tag)
+    {
+        int size = strlen(other.tag);
+        tag = new char[size];
+        strcpy(tag, other.tag);
+    }
+    else
+    {
+        tag = nullptr;
+    }
+}
+
+std::ostream& operator<<(std::ostream& out, Point& point)
+{
+    out << point.toString();
+    return out;
+}
